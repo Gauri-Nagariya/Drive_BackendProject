@@ -13,172 +13,73 @@
       rel="stylesheet"
     />
   </head>
-  <body
-    class="bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 h-screen p-6"
-  >
+  <body class="bg-gradient-to-br from-blue-50 via-green-50 to-blue-100 h-screen p-4 sm:p-6">
+
     <div class="max-w-4xl mx-auto space-y-8">
-      <div class="flex flex-wrap gap-6 justify-between mb-6">
+
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6">
         <button
           onclick="openupload()"
-          class="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 text-white font-semibold text-lg shadow-lg hover:shadow-2xl hover:from-green-500 hover:to-blue-700 active:scale-95 transition-all duration-200 cursor-pointer"
+          class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 text-white font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl hover:from-green-500 hover:to-blue-700 active:scale-95 transition-all duration-200 cursor-pointer w-full sm:w-auto justify-center"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0-8l-4 4m4-4l4 4m-4-8V4"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0-8l-4 4m4-4l4 4m-4-8V4" />
           </svg>
           Upload Files
         </button>
 
         <button
           onclick="goUpdate()"
-          class="flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-black font-semibold text-lg shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-orange-600 active:scale-95 transition-all duration-200 cursor-pointer"
+          class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-black font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-orange-600 active:scale-95 transition-all duration-200 cursor-pointer w-full sm:w-auto justify-center"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15.232 5.232l3.536 3.536M9 11l3 3L21 5l-3-3-9 9z"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 11l3 3L21 5l-3-3-9 9z" />
           </svg>
           Update User
         </button>
       </div>
 
-      <div
-        id="uploadModal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 transition-opacity"
-      >
-        <div
-          class="bg-white rounded-3xl shadow-xl p-6 w-full max-w-md relative transform scale-95 transition-transform duration-200"
-        >
-          <button
-            onclick="closeupload()"
-            class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl"
-          >
-            ✕
-          </button>
-          <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">
-            Upload File
-          </h2>
+     <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-3xl shadow-xl p-6 w-full max-w-md sm:max-w-lg relative transform scale-95 transition-transform duration-200">
+    <button onclick="closeupload()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl">✕</button>
+    <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Upload File</h2>
 
-          <form
-            action="/home"
-            method="post"
-            enctype="multipart/form-data"
-            class="space-y-4"
-          >
-            <label
-              for="dropzone-file"
-              class="flex flex-col items-center justify-center w-full h-64 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:bg-gray-200 transition-all"
-            >
-              <div class="text-center pt-10 pb-6">
-                <p class="mb-2 text-sm">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
-                </p>
-                <p class="text-xs text-gray-500">SVG, PNG, JPG, GIF</p>
-              </div>
-              <input
-                id="dropzone-file"
-                type="file"
-                name="file"
-                class="hidden"
-              />
-            </label>
-            <button
-              type="submit"
-              class="w-full py-3 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 text-white font-semibold hover:from-green-500 hover:to-blue-700 shadow-lg hover:shadow-2xl active:scale-95 transition-all duration-200"
-            >
-              Upload
-            </button>
-          </form>
+    <form action="/home" method="post" enctype="multipart/form-data" class="space-y-4">
+      <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:bg-gray-200 transition-all">
+        <div class="text-center pt-10 pb-6">
+          <p class="mb-2 text-sm"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+          <p class="text-xs text-gray-500">SVG, PNG, JPG, GIF</p>
         </div>
-      </div>
+        <input id="dropzone-file" type="file" name="file" class="hidden" />
+      </label>
+      <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 text-white font-semibold hover:from-green-500 hover:to-blue-700 shadow-lg hover:shadow-2xl active:scale-95 transition-all duration-200">
+        Upload
+      </button>
+    </form>
+  </div>
+</div>
 
       <div class="space-y-4">
         <% files.forEach((file) => { %>
-        <div
-          class="flex justify-between items-center bg-white rounded-lg shadow p-4 hover:bg-gray-50 transition-all"
-        >
-          <p class="text-gray-700 font-medium"><%= file.filename %></p>
-          <div class="flex gap-4">
-            <a
-              href="/view/<%= file._id %>"
-              target="_blank"
-              class="flex items-center gap-1 text-blue-600 hover:underline font-medium"
-            >
-              View
-            </a>
-            <a
-              href="/download/<%= file._id %>"
-              class="flex items-center gap-1 text-blue-600 hover:underline font-medium"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0-8l-4 4m4-4l4 4m-4-8V4"
-                />
-              </svg>
-              Download
-            </a>
-            <a
-              href="/home/delete/<%= file._id %>"
-              class="flex items-center gap-1 text-red-600 hover:underline font-medium"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-              Delete
-            </a>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white rounded-lg shadow p-4 hover:bg-gray-50 transition-all">
+          <p class="text-gray-700 font-medium break-words"><%= file.filename %></p>
+          <div class="flex flex-wrap gap-3 mt-2 sm:mt-0">
+            <a href="/view/<%= file._id %>" target="_blank" class="flex items-center gap-1 text-blue-600 hover:underline font-medium">View</a>
+            <a href="/download/<%= file._id %>" class="flex items-center gap-1 text-blue-600 hover:underline font-medium">Download</a>
+            <a href="/home/delete/<%= file._id %>" class="flex items-center gap-1 text-red-600 hover:underline font-medium">Delete</a>
           </div>
         </div>
         <% }) %>
       </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     <script>
       function openupload() {
-        document.getElementById("uploadModal").classList.remove("hidden");
-        setTimeout(() => {
-          document.getElementById("uploadModal").classList.add("opacity-100");
-        }, 10);
+        const modal = document.getElementById("uploadModal");
+        modal.classList.remove("hidden");
+        setTimeout(()=> modal.classList.add("opacity-100"), 10);
       }
 
       function closeupload() {
@@ -189,5 +90,6 @@
         window.location.href = "/update/:id";
       }
     </script>
+
   </body>
 </html>
