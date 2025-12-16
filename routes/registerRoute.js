@@ -33,10 +33,17 @@ router.post(
   async (req, res) => {
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.status(400).send(error.array());
+      return res.status(400).send("error.array()");
     }
 
     const { username, email, password } = req.body;
+
+    const existingUser = await userModel.findOne({ $or: [{ email }, { username }] });
+if (existingUser) {
+  let msg = existingUser.email === email ? "Email already registered" : "Username already registered";
+  return res.render("register", { error: msg });
+}
+    
 
     const hashPassword = await bcrypt.hash(password, 10);
     const user = await userModel.create({
