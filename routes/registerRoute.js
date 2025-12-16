@@ -11,8 +11,7 @@ router.get("/", (req, res) => {
 
 //--------------------------------------REGISTER---------------------------
 router.get("/register", (req, res) => {
-  // res.send("working register")
-  res.render("register");
+  res.render("register", { error: null });
 });
 
 router.post(
